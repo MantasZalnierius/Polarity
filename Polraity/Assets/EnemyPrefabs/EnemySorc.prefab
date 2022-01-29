@@ -228,7 +228,7 @@ MonoBehaviour:
   playerSpeed: {fileID: 0}
   firePoint: {fileID: 8258940546928386959}
   bullet: {fileID: 5998316115840538604, guid: f526030fe78d93740a7db163b47c82b3, type: 3}
-  particle: {fileID: 7068933511543667704, guid: e96609d16811c2a44ae04d4ab690358a,
+  deathParticle: {fileID: 1048734055293713659, guid: 31c1b82019c3b874f8ace7aa559af950,
     type: 3}
 --- !u!1 &8258940545402630669
 GameObject:
