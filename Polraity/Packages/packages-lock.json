@@ -158,6 +158,13 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "ie.itcarlow.2dmovement": {
+      "version": "https://github.com/itcgames/RWM-2DMovement.git?path=2D Movement/Packages/ie.itcarlow.2dmovement",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fde3c0569f368c0fc7e7cc84eb272882bee668b7"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
