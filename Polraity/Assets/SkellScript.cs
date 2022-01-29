@@ -69,29 +69,13 @@ public class SkellScript : MonoBehaviour
 
         }
 
-        //private void OnTriggerEnter2D(Collider2D collision)
-        //{
-        //    if (collision.CompareTag("Player"))
-        //    {
-        //        hurtPlayer = true;
-        //    }
-        //}
 
-
-        //public IEnumerator attackPlayer()
-        //{
-        //    Debug.Log("hurt");
-        //    animator.SetBool("attack", true);
-        //    speed = 0;
-        //    yield return new WaitForSeconds(2.0f);
-        //    animator.SetBool("attack", false);
-
-        //}
+  
     }
 
 
     void damage()
-    {   //this creates random damage for the enemy
+    {   //this creates random damage for the enemy              <------ do random damage
         if (skellyHeath <= 0)
         {
             speed = 0;
