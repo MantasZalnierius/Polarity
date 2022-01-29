@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkellyScript : MonoBehaviour
+public class SkellScript : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
