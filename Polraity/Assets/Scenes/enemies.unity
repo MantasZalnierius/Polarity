@@ -240,7 +240,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15734482, y: -0.09834051}
+  m_Offset: {x: -0.16859913, y: -0.09834051}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -251,7 +251,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.60838723, y: 1.0340881}
+  m_Size: {x: 0.5858786, y: 1.0340881}
   m_EdgeRadius: 0
 --- !u!50 &32977552
 Rigidbody2D:
@@ -288,10 +288,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 32977552}
   animator: {fileID: 32977548}
-  speed: 0.5
+  speed: 1
   player: {fileID: 244718967}
   skellyHeath: 100
   randomDamage: 0
+  hurtPlayer: 0
 --- !u!1 &244718967
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1838203, y: -0.10879171}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -335,7 +336,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9230769, y: 1.2307693}
+  m_Size: {x: 0.55543625, y: 1.0131857}
   m_EdgeRadius: 0
 --- !u!50 &244718969
 Rigidbody2D:
@@ -417,7 +418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244718967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.52, y: -2.25, z: 0}
+  m_LocalPosition: {x: -1.25, y: -3.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -434,6 +435,7 @@ GameObject:
   - component: {fileID: 332041460}
   - component: {fileID: 332041462}
   - component: {fileID: 332041461}
+  - component: {fileID: 332041463}
   m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
@@ -468,7 +470,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3, y: 0}
+  m_Offset: {x: 0.2, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
 --- !u!212 &332041462
@@ -521,6 +523,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &332041463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332041459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3807cd233178e247948d921852d2249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skelly: {fileID: 32977553}
 --- !u!1 &1511457713
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,14 +6,14 @@ public class SkellScript : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
-    public float speed = 2;
+    public float speed = 1;
     public GameObject player;
     Vector2 savedlocalScale;
 
     public float skellyHeath;
     public float randomDamage;
     bool skellydead = false;
-    bool hurtPlayer = false;
+    public bool hurtPlayer = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,41 +41,55 @@ public class SkellScript : MonoBehaviour
         }
 
         //setting the rotation for the enemy depending on the side they are facing 
-        if (player.transform.position.x > rb.transform.position.x)
+        if (hurtPlayer == false && skellydead == false)
         {
-            rb.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector2(savedlocalScale.x, savedlocalScale.y);
-        }
-        if (player.transform.position.x < rb.transform.position.x)
-        {
-            rb.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(-savedlocalScale.x, savedlocalScale.y);
+            animator.SetBool("attack", false); 
+            speed = 1;
+            if (player.transform.position.x > rb.transform.position.x)
+            {
+                rb.velocity = new Vector2(speed, 0);
+                transform.localScale = new Vector2(savedlocalScale.x, savedlocalScale.y);
+            }
+            if (player.transform.position.x < rb.transform.position.x)
+            {
+                rb.velocity = new Vector2(-speed, 0);
+                transform.localScale = new Vector2(-savedlocalScale.x, savedlocalScale.y);
+            }
         }
 
+        if (hurtPlayer == true)
+        {
+            animator.SetBool("attack", true);
+            speed = 0;
+        }
         //
-        if (rb.velocity.x == 0.0f)
+        if (rb.velocity.x == 0.0f && animator.GetBool("attack") == false)
         {
             animator.SetFloat("speed", Mathf.Abs(0));
 
         }
 
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.CompareTag("Player"))
+        //    {
+        //        hurtPlayer = true;
+        //    }
+        //}
 
-        if (hurtPlayer == true)
-        {
-            Debug.Log("hurt");
-            animator.SetBool("death", true);
 
-        }
+        //public IEnumerator attackPlayer()
+        //{
+        //    Debug.Log("hurt");
+        //    animator.SetBool("attack", true);
+        //    speed = 0;
+        //    yield return new WaitForSeconds(2.0f);
+        //    animator.SetBool("attack", false);
 
-
+        //}
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            hurtPlayer = true;
-        }
-    }
+
+
     void damage()
     {   //this creates random damage for the enemy
         if (skellyHeath <= 0)
@@ -90,6 +104,7 @@ public class SkellScript : MonoBehaviour
         skellyHeath -= randomDamage;
 
     }
+
     public IEnumerator hurtTheEnemy()
     {
         animator.SetBool("hurt", true);
