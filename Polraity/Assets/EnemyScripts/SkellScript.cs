@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkellyScript : MonoBehaviour
+public class SkellScript : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
-    public float speed = 2;
+    public float speed = 1;
     public GameObject player;
     Vector2 savedlocalScale;
 
     public float skellyHeath;
     public float randomDamage;
     bool skellydead = false;
-    bool hurtPlayer = false;
+    public bool hurtPlayer = false;
+    public bool seekPlayer= false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class SkellyScript : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (Input.GetKey(KeyCode.H))        //place holder for hurting th eenemy 
+        if (Input.GetKey(KeyCode.H))        //place holder for hurting th eenemy                <-------- if player will hit them
         {
             StartCoroutine(hurtTheEnemy());
         }
@@ -40,42 +41,41 @@ public class SkellyScript : MonoBehaviour
             animator.SetFloat("speed", Mathf.Abs(speed));
         }
 
-        //setting the rotation for the enemy depending on the side they are facing 
-        if (player.transform.position.x > rb.transform.position.x)
-        {
-            rb.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector2(savedlocalScale.x, savedlocalScale.y);
-        }
-        if (player.transform.position.x < rb.transform.position.x)
-        {
-            rb.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(-savedlocalScale.x, savedlocalScale.y);
-        }
+            //setting the rotation for the enemy depending on the side they are facing              
+            if (hurtPlayer == false && skellydead == false && seekPlayer == true)
+            {
+                animator.SetBool("attack", false);
+                 speed = 1;
+                if (player.transform.position.x > rb.transform.position.x)
+                {
+                    rb.velocity = new Vector2(speed, 0);
+                    transform.localScale = new Vector2(savedlocalScale.x, savedlocalScale.y);
+                }
+                if (player.transform.position.x < rb.transform.position.x)
+                {
+                    rb.velocity = new Vector2(-speed, 0);
+                    transform.localScale = new Vector2(-savedlocalScale.x, savedlocalScale.y);
+                }
+            }
+        
 
+        if (hurtPlayer == true)
+        {
+            animator.SetBool("attack", true);
+            speed = 0;
+        }
         //
-        if (rb.velocity.x == 0.0f)
+        if (rb.velocity.x == 0.0f && animator.GetBool("attack") == false)
         {
             animator.SetFloat("speed", Mathf.Abs(0));
 
         }
 
 
-        if (hurtPlayer == true)
-        {
-            Debug.Log("hurt");
-            animator.SetBool("death", true);
-
-        }
-
-
+  
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            hurtPlayer = true;
-        }
-    }
+
+
     void damage()
     {   //this creates random damage for the enemy
         if (skellyHeath <= 0)
@@ -86,10 +86,11 @@ public class SkellyScript : MonoBehaviour
             rb.velocity = new Vector2(speed, 0);
             skellydead = true;
         }
-        randomDamage = 10.0f;
+        randomDamage = Random.Range(5.0f, 15.0f);
         skellyHeath -= randomDamage;
 
     }
+
     public IEnumerator hurtTheEnemy()
     {
         animator.SetBool("hurt", true);
