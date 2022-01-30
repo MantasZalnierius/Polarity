@@ -67,7 +67,7 @@ public class SorcererScript : MonoBehaviour
        
         if (rb.velocity.x == 0.0f && animator.GetBool("attack") == false)
         {
-            animator.SetFloat("speed", Mathf.Abs(0));
+        
 
         }
 
