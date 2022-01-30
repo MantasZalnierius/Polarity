@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - Ground
-=======
-  - Enemy1
->>>>>>> filipEnemies
+  tags: []
   layers:
   - Default
   - TransparentFX
