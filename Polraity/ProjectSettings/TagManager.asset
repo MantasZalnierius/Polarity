@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Ground
+=======
+  - Enemy1
+>>>>>>> filipEnemies
   layers:
   - Default
   - TransparentFX
