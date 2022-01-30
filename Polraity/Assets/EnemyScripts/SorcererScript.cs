@@ -19,7 +19,7 @@ public class SorcererScript : MonoBehaviour
     public GameObject directionCircle;
     public Transform leftPosition;
     public Transform rightPosition;
-    public temporatyPlayer playerSpeed;
+    public Runtime2DMovement playerSpeed;
     public Transform firePoint;
     public GameObject bullet;
     float shootingTime;

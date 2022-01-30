@@ -7,6 +7,7 @@ public class bulletCollision : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject particles;
     public Transform posPart;
+    public Runtime2DMovement player;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class bulletCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("player shot");
-            //Destroy(collision.gameObject);
+            player.decreaseHealth(5);
 
         }
     }
